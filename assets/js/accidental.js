@@ -20,7 +20,7 @@ let referenceNumber = url.searchParams.get('refNumber');
 let uid = url.searchParams.get('sender');
 let botId = url.searchParams.get('botId');
 
-var currSeconds = 0; 
+var currSeconds = 0;
 
 $('#privacy_consent_1').prop('checked', true);
 $('#privacy_consent_2').prop('checked', true);
@@ -38,14 +38,14 @@ form_Bank.addEventListener('submit', handleAccountInfo);
     })
 }) */
 
-  
 
-  function myDisable() {
+
+function myDisable() {
   document.getElementById("submit9").disabled = true;
   document.getElementById("submit9").style.cursor = "no-drop";
-  document.getElementById("field_AccountName"). disabled = true; 
+  document.getElementById("field_AccountName").disabled = true;
   document.getElementById("field_AccountName").style.cursor = "no-drop";
-  document.getElementById("field_AccountNumber").disabled = true;  
+  document.getElementById("field_AccountNumber").disabled = true;
   document.getElementById("field_AccountNumber").style.cursor = "no-drop";
   document.getElementById("field_Bank").disabled = true;
   document.getElementById("field_Bank").style.cursor = "no-drop";
@@ -60,61 +60,63 @@ form_Bank.addEventListener('submit', handleAccountInfo);
   document.getElementById("bank_form").style.cursor = "no-drop";
 }
 
-function addFileToList(fileObject, fileName){
+function addFileToList(fileObject, fileName) {
   console.log(fileName);
-  let index = filesList.findIndex(x => x.Filename == fileName )
+  let index = filesList.findIndex(x => x.Filename == fileName)
 
-  if(index===-1){
+  if (index === -1) {
     console.log("adding bcoz unique");
     filesList.push(fileObject);
   }
 }
 
 function timer() {
-  var random = Math.floor(Math.random() * 5) + 1  
+ 
+  var random = Math.floor(Math.random() * 5) + 1
   return new Promise((resolve, reject) => {
-    var i=0
+    var i = 0
     let cleartime = setInterval(() => {
-     i = random + i;
-     renderProgress(i)
-     if(i == 99){
-      i = 100;
-      renderProgress(i)
-     }
-     if(i == 100 )  {
-   
+      i = random + i;
+      renderProgress(isNotNumber)
+      if (i == 99) {
+        i = 100;
+        renderProgress(i)
+      }
+      if (i == 100) {
+
         console.log("cleartime");
         clearTimeout(cleartime);
         resolve("cleartime")
-    }
-  //  i++;
-   }, 500);
+      }
+      //  i++;
+    }, 500);
   })
 }
 
 function renderProgress(progress) {
+
   progress = Math.floor(progress);
-  if(progress<25){
-      var angle = -90 + (progress/100)*360;
-      $(".animate-0-25-b").css("transform","rotate("+angle+"deg)");
+  if (progress < 25) {
+    var angle = -90 + (progress / 100) * 360;
+    $(".animate-0-25-b").css("transform", "rotate(" + angle + "deg)");
   }
-  else if(progress>=25 && progress<50){
-      var angle = -90 + ((progress-25)/100)*360;
-      $(".animate-0-25-b").css("transform","rotate(0deg)");
-      $(".animate-25-50-b").css("transform","rotate("+angle+"deg)");
+  else if (progress >= 25 && progress < 50) {
+    var angle = -90 + ((progress - 25) / 100) * 360;
+    $(".animate-0-25-b").css("transform", "rotate(0deg)");
+    $(".animate-25-50-b").css("transform", "rotate(" + angle + "deg)");
   }
-  else if(progress>=50 && progress<75){
-      var angle = -90 + ((progress-50)/100)*360;
-      $(".animate-25-50-b, .animate-0-25-b").css("transform","rotate(0deg)");
-      $(".animate-50-75-b").css("transform","rotate("+angle+"deg)");
+  else if (progress >= 50 && progress < 75) {
+    var angle = -90 + ((progress - 50) / 100) * 360;
+    $(".animate-25-50-b, .animate-0-25-b").css("transform", "rotate(0deg)");
+    $(".animate-50-75-b").css("transform", "rotate(" + angle + "deg)");
   }
-  else if(progress>=75 && progress<=100){
-      var angle = -90 + ((progress-75)/100)*360;
-      $(".animate-50-75-b, .animate-25-50-b, .animate-0-25-b")
-                                          .css("transform","rotate(0deg)");
-      $(".animate-75-100-b").css("transform","rotate("+angle+"deg)");
+  else if (progress >= 75 && progress <= 100) {
+    var angle = -90 + ((progress - 75) / 100) * 360;
+    $(".animate-50-75-b, .animate-25-50-b, .animate-0-25-b")
+      .css("transform", "rotate(0deg)");
+    $(".animate-75-100-b").css("transform", "rotate(" + angle + "deg)");
   }
-  $(".text").html(progress+"%");
+  $(".text").html(progress + "%");
 }
 
 
@@ -147,21 +149,22 @@ $(document).ready(function (event) {
   disableFutureDates();
   disableFutureDatesDOB();
   setCountryCode();
-  let idleInterval = setInterval(timerIncrement, 1000); 
-  $(this).mousemove(resetTimer); 
-  $(this).keypress(resetTimer); 
+  let idleInterval = setInterval(timerIncrement, 1000);
+  $(this).mousemove(resetTimer);
+  $(this).keypress(resetTimer);
+
 
   var val = 'Peso'
   if (val == "Peso") {
     $("#field_Bank").html(
-     "<option value='Bank of the Philippine Islands - BPI' >Bank of the Philippine Islands - BPI</option><option value='BPI Family Savings Bank - BFB'>BPI Family Savings Bank - BFB</option><option value='Banco de Oro - BDO'>Banco de Oro - BDO</option><option value='China Banking Corporation - CBC'>China Banking Corporation - CBC</option><option value='Citibank Philippines - CITI'>Citibank Philippines - CITI</option><option value='Development Bank of the Phils - DBP'>Development Bank of the Phils - DBP</option><option value='Eastwest Bank - EWB'>Eastwest Bank - EWB</option><option value='Hongkong Shanghai Banking Corp. Phils - HSBC'>Hongkong Shanghai Banking Corp. Phils - HSBC</option><option value='Land Bank of the Philippines - LPB'>Land Bank of the Philippines - LPB</option><option value='Metropolitan Banks and Trust Company - MBTC'>Metropolitan Banks and Trust Company - MBTC</option><option value='Philippine National Bank - PNB'>Philippine National Bank - PNB</option><option value='Rizal Commercial Banking Corp - RCBC'>Rizal Commercial Banking Corp - RCBC</option><option value='Security Bank - SBTC'>Security Bank - SBTC</option><option value='Union Bank of the Philippines - UB'>Union Bank of the Philippines - UB</option>"
+      "<option value='Bank of the Philippine Islands - BPI' >Bank of the Philippine Islands - BPI</option><option value='BPI Family Savings Bank - BFB'>BPI Family Savings Bank - BFB</option><option value='Banco de Oro - BDO'>Banco de Oro - BDO</option><option value='China Banking Corporation - CBC'>China Banking Corporation - CBC</option><option value='Citibank Philippines - CITI'>Citibank Philippines - CITI</option><option value='Development Bank of the Phils - DBP'>Development Bank of the Phils - DBP</option><option value='Eastwest Bank - EWB'>Eastwest Bank - EWB</option><option value='Hongkong Shanghai Banking Corp. Phils - HSBC'>Hongkong Shanghai Banking Corp. Phils - HSBC</option><option value='Land Bank of the Philippines - LPB'>Land Bank of the Philippines - LPB</option><option value='Metropolitan Banks and Trust Company - MBTC'>Metropolitan Banks and Trust Company - MBTC</option><option value='Philippine National Bank - PNB'>Philippine National Bank - PNB</option><option value='Rizal Commercial Banking Corp - RCBC'>Rizal Commercial Banking Corp - RCBC</option><option value='Security Bank - SBTC'>Security Bank - SBTC</option><option value='Union Bank of the Philippines - UB'>Union Bank of the Philippines - UB</option>"
     );
-  } 
+  }
   $("#from_currency").change(function () {
     var val = $(this).val();
     if (val == "Peso") {
       $("#field_Bank").html(
-       "<option value='Bank of the Philippine Islands - BPI' >Bank of the Philippine Islands - BPI</option><option value='BPI Family Savings Bank - BFB'>BPI Family Savings Bank - BFB</option><option value='Banco de Oro - BDO'>Banco de Oro - BDO</option><option value='China Banking Corporation - CBC'>China Banking Corporation - CBC</option><option value='Citibank Philippines - CITI'>Citibank Philippines - CITI</option><option value='Development Bank of the Phils - DBP'>Development Bank of the Phils - DBP</option><option value='Eastwest Bank - EWB'>Eastwest Bank - EWB</option><option value='Hongkong Shanghai Banking Corp. Phils - HSBC'>Hongkong Shanghai Banking Corp. Phils - HSBC</option><option value='Land Bank of the Philippines - LPB'>Land Bank of the Philippines - LPB</option><option value='Metropolitan Banks and Trust Company - MBTC'>Metropolitan Banks and Trust Company - MBTC</option><option value='Philippine National Bank - PNB'>Philippine National Bank - PNB</option><option value='Rizal Commercial Banking Corp - RCBC'>Rizal Commercial Banking Corp - RCBC</option><option value='Security Bank - SBTC'>Security Bank - SBTC</option><option value='Union Bank of the Philippines - UB'>Union Bank of the Philippines - UB</option>"
+        "<option value='Bank of the Philippine Islands - BPI' >Bank of the Philippine Islands - BPI</option><option value='BPI Family Savings Bank - BFB'>BPI Family Savings Bank - BFB</option><option value='Banco de Oro - BDO'>Banco de Oro - BDO</option><option value='China Banking Corporation - CBC'>China Banking Corporation - CBC</option><option value='Citibank Philippines - CITI'>Citibank Philippines - CITI</option><option value='Development Bank of the Phils - DBP'>Development Bank of the Phils - DBP</option><option value='Eastwest Bank - EWB'>Eastwest Bank - EWB</option><option value='Hongkong Shanghai Banking Corp. Phils - HSBC'>Hongkong Shanghai Banking Corp. Phils - HSBC</option><option value='Land Bank of the Philippines - LPB'>Land Bank of the Philippines - LPB</option><option value='Metropolitan Banks and Trust Company - MBTC'>Metropolitan Banks and Trust Company - MBTC</option><option value='Philippine National Bank - PNB'>Philippine National Bank - PNB</option><option value='Rizal Commercial Banking Corp - RCBC'>Rizal Commercial Banking Corp - RCBC</option><option value='Security Bank - SBTC'>Security Bank - SBTC</option><option value='Union Bank of the Philippines - UB'>Union Bank of the Philippines - UB</option>"
       );
     } else if (val == "USD") {
       $("#field_Bank").html(
@@ -172,16 +175,16 @@ $(document).ready(function (event) {
 
 });
 
-function resetTimer() { 
-  currSeconds = 0; 
-} 
+function resetTimer() {
+  currSeconds = 0;
+}
 
-function timerIncrement() { 
-  currSeconds = currSeconds + 1; 
-  if(currSeconds == 1800) {
+function timerIncrement() {
+  currSeconds = currSeconds + 1;
+  if (currSeconds == 1800) {
     window.top.location = 'http://www.philamlife.com'
   }
-} 
+}
 
 
 
@@ -257,16 +260,16 @@ function disableFutureDatesDOB() {
   var dtToday = new Date();
   var month = dtToday.getMonth() + 1;
   var day = dtToday.getDate();
-  var dobdate = day-1
+  var dobdate = day - 1
   var year = dtToday.getFullYear();
   if (month < 10)
     month = '0' + month.toString();
   if (day < 10)
     day = '0' + day.toString();
   var maxDate = year + '-' + month + '-' + dobdate;
-  if( day <= 10) {
-      maxDate = year + '-' + month + '-' + '0'+ dobdate;
-  } 
+  if (day <= 10) {
+    maxDate = year + '-' + month + '-' + '0' + dobdate;
+  }
   $('#field_DOB').attr('max', maxDate);
 }
 
@@ -664,10 +667,10 @@ function formatAMPM(date) {
   minutes = full_Time[1];
   var ampm = hours >= 12 ? 'pm' : 'am';
   hours = hours % 12;
-  hours = hours ? hours : 12; 
+  hours = hours ? hours : 12;
   minutes = minutes < 10 ? minutes : minutes;
   var strTime = hours + ':' + minutes + ' ' + ampm;
-  
+
   return strTime
 }
 
@@ -992,20 +995,20 @@ function handleForm(event) {
     $("#step2>div").addClass("active");
     $('#requirements').show();
     /*  $('#requirements')[0].scrollIntoView(true); */
-      $("#customer_Name").text(`Hi ${field_firstName}, Hang in there as we are now processing your request. Kindly expect an SMS update from us within 1 to 2 working days on the status of your request.`);
+    $("#customer_Name").text(`Hi ${field_firstName}, Hang in there as we are now processing your request. Kindly expect an SMS update from us within 1 to 2 working days on the status of your request.`);
     console.log('Data -> ', data)
 
     InsuredInformation["FirstName"] = field_firstName;
     InsuredInformation["MiddleName"] = field_middleName;
     InsuredInformation["LastName"] = field_lastName;
     InsuredInformation["Suffix"] = field_lastName_Suffix;
-    InsuredInformation["DateOfBirth"] = field_DOB.split('-')[1]+'/'+field_DOB.split('-')[2]+'/'+field_DOB.split('-')[0];
+    InsuredInformation["DateOfBirth"] = field_DOB.split('-')[1] + '/' + field_DOB.split('-')[2] + '/' + field_DOB.split('-')[0];
     InsuredInformation["CountryCode"] = $("select#inlineFormCustomSelect option").filter(":selected").val();
     InsuredInformation["PhoneNumber"] = field_mobileNum;
     InsuredInformation["EmailAddress"] = field_emailAddress;
     InsuredInformation["HomeAddress"] = field_homeAddress;
     InsuredInformation["InjuryDetails"] = field_injury;
-    InsuredInformation["AccidentDate"] =  field_DOA.split('-')[1]+'/'+field_DOA.split('-')[2]+'/'+field_DOA.split('-')[0];
+    InsuredInformation["AccidentDate"] = field_DOA.split('-')[1] + '/' + field_DOA.split('-')[2] + '/' + field_DOA.split('-')[0];
     InsuredInformation["AccidentTime"] = full_TOA;
     InsuredInformation["AccidentPlace"] = field_POA;
     InsuredInformation["check1"] = data.privacy_consent_1;
@@ -1025,7 +1028,7 @@ function handleForm(event) {
         }
       })
     }), '*');
-  }else if((comapareDates == false) && ((field_DOB !== '') && (field_DOA != ''))) {
+  } else if ((comapareDates == false) && ((field_DOB !== '') && (field_DOA != ''))) {
     $('#popUp_DOB').modal('show');
   } else {
     $('#popUp').modal('show');
@@ -1167,11 +1170,11 @@ file1.onchange = async function (e) {
         console.log("setting file data : ");
         let accident = {};
         // accident['LIDC001Front'] = {
-          accident['BeneficiaryNo'] = beneficiaryCount,
+        accident['BeneficiaryNo'] = beneficiaryCount,
           accident["Filename"] = `${fileName}.pdf`,
-          accident["DocType"]= "PDF",
-          accident["DocTypeCode"]= "LIDC001",
-          accident["DocumentDescription"]= "Front copy of doc"
+          accident["DocType"] = "PDF",
+          accident["DocTypeCode"] = "LIDC001",
+          accident["DocumentDescription"] = "Front copy of doc"
         // }
 
         addFileToList(accident, `${fileName}.pdf`);
@@ -1225,10 +1228,10 @@ file2.onchange = async function (e) {
 
         let accident = {};
         accident['BeneficiaryNo'] = beneficiaryCount,
-        accident["Filename"] = `${fileName}.pdf`,
-        accident["DocType"]= "PDF",
-        accident["DocTypeCode"]= "LIDC001",
-        accident["DocumentDescription"]= "Back copy of doc"
+          accident["Filename"] = `${fileName}.pdf`,
+          accident["DocType"] = "PDF",
+          accident["DocTypeCode"] = "LIDC001",
+          accident["DocumentDescription"] = "Back copy of doc"
 
         addFileToList(accident, `${fileName}.pdf`);
         const formData = new FormData()
@@ -1280,10 +1283,10 @@ file3.onchange = async function (e) {
         let accident = {};
 
         accident['BeneficiaryNo'] = beneficiaryCount,
-        accident["Filename"] = `${fileName}.pdf`,
-        accident["DocType"]= "PDF",
-        accident["DocTypeCode"]= docType,
-        accident["DocumentDescription"]= "Attending Physician’s Statement"
+          accident["Filename"] = `${fileName}.pdf`,
+          accident["DocType"] = "PDF",
+          accident["DocTypeCode"] = docType,
+          accident["DocumentDescription"] = "Attending Physician’s Statement"
 
         addFileToList(accident, `${fileName}.pdf`);
         const formData = new FormData()
@@ -1336,10 +1339,10 @@ file4.onchange = async function (e) {
         let accident = {};
 
         accident['BeneficiaryNo'] = beneficiaryCount,
-        accident["Filename"] = `${fileName}.pdf`,
-        accident["DocType"]= "PDF",
-        accident["DocTypeCode"]= docType,
-        accident["DocumentDescription"]= "Police or Narration Report"
+          accident["Filename"] = `${fileName}.pdf`,
+          accident["DocType"] = "PDF",
+          accident["DocTypeCode"] = docType,
+          accident["DocumentDescription"] = "Police or Narration Report"
 
         addFileToList(accident, `${fileName}.pdf`);
         const formData = new FormData()
@@ -1392,10 +1395,10 @@ file5.onchange = async function (e) {
         let accident = {};
 
         accident['BeneficiaryNo'] = beneficiaryCount,
-        accident["Filename"] = `${fileName}.pdf`,
-        accident["DocType"]= "PDF",
-        accident["DocTypeCode"]= docType,
-        accident["DocumentDescription"]= "Official Receipts (ORs)"
+          accident["Filename"] = `${fileName}.pdf`,
+          accident["DocType"] = "PDF",
+          accident["DocTypeCode"] = docType,
+          accident["DocumentDescription"] = "Official Receipts (ORs)"
 
         addFileToList(accident, `${fileName}.pdf`);
 
@@ -1449,10 +1452,10 @@ file6.onchange = async function (e) {
         let accident = {};
 
         accident['BeneficiaryNo'] = beneficiaryCount,
-        accident["Filename"] = `${fileName}.pdf`,
-        accident["DocType"]= "PDF",
-        accident["DocTypeCode"]= docType,
-        accident["DocumentDescription"]= "Proof of Bank Account"
+          accident["Filename"] = `${fileName}.pdf`,
+          accident["DocType"] = "PDF",
+          accident["DocTypeCode"] = docType,
+          accident["DocumentDescription"] = "Proof of Bank Account"
 
         addFileToList(accident, `${fileName}.pdf`);
 
@@ -1685,7 +1688,7 @@ function handleAccountInfo(event) {
   if (!file6.value) {
     $('#upload_feedback_label').show();
     $('#upload_feedback_label').text('Please upload your Bank Account Ownership');
-  }else {
+  } else {
     $('#upload_feedback_label').hide();
     $('#upload_feedback_label').text('');
   }
@@ -1739,6 +1742,10 @@ function handleAccountInfo(event) {
 
     console.log("FPB : ")
     console.log(finalPayload)
+    
+
+    renderProgress(10)
+   
     window.parent.postMessage(JSON.stringify({
       event_code: 'ym-client-event', data: JSON.stringify({
         event: {
@@ -1747,19 +1754,48 @@ function handleAccountInfo(event) {
         }
       })
     }), '*');
-    myDisable()
-    timer().then( async () => { 
-    $("#step2").addClass("done");
-   /*  $("#step3").addClass("active");
-    $("#step3>div").addClass("active"); */
-    /* $("#step3").addClass("done"); */
-    $("#step3_circle").addClass("md-step-step3-circle ");
-    $("#step3_span").addClass("md-step3-span");
-    $("#step3_reference").addClass("md-step3-span")
-    $("#account_details").hide();
-    $("#process_confirmation").show();
-    console.log("Data -> ", data);
-    });
+
+    window.addEventListener('message', function (eventData) {
+
+      console.log("receiving final event  event in acc")
+      // console.log(event.data.event_code)
+      try {
+
+        if (eventData.data) {
+          let event = JSON.parse(eventData.data);
+          console.log(event)
+          if (event.event_code == 'uploadSuccess') { //sucess
+            renderProgress(50)
+          }
+
+          else if (event.event_code == 'submitSuccess') {
+            myDisable()
+            
+              renderProgress(100)
+              $("#step2").addClass("done");
+              /*  $("#step3").addClass("active");
+               $("#step3>div").addClass("active"); */
+              /* $("#step3").addClass("done"); */
+              $("#step3_circle").addClass("md-step-step3-circle ");
+              $("#step3_span").addClass("md-step3-span");
+              $("#step3_reference").addClass("md-step3-span")
+              $("#account_details").hide();
+              $("#process_confirmation").show();
+              console.log("Data -> ", data);
+
+          
+          }
+        }
+        else {
+
+        }
+      } catch (error) {
+        console.log(error)
+      }
+
+    })
+
+
   } else {
     $("#popUp").modal("show");
   }
@@ -1792,6 +1828,23 @@ function pickUp() {
 
   console.log("pick up payload : ")
   console.log(finalPayload)
+  myDisable()
+  timer().then(async () => {
+    $("#step2").addClass("done");
+    /*  $("#step3").addClass("active");
+     $("#step3>div").addClass("active"); */
+    /* $("#step3").addClass("done"); */
+    $("#step3_circle").addClass("md-step-step3-circle ");
+    $("#step3_span").addClass("md-step3-span");
+    $("#step3_reference").addClass("md-step3-span")
+    $("#account_details").hide();
+    $("#process_confirmation").show();
+    console.log("Data -> ", data);
+
+  });
+  // $('#spin1').show();
+  timer(10);
+  timer(50);
   window.parent.postMessage(JSON.stringify({
     event_code: 'ym-client-event', data: JSON.stringify({
       event: {
@@ -1800,12 +1853,42 @@ function pickUp() {
       }
     })
   }), '*');
-  $('#payment').hide();
-  /* $('#process_confirmation').show(); */
-  $("#pickUp").show();
-  $("#step2").addClass("active");
-  $("#step2>div").addClass("active");
-  $("#step2").addClass("done");
+
+  window.addEventListener('message', function (eventData) {
+
+    console.log("receiving final event  event in acc")
+    // console.log(event.data.event_code)
+    try {
+
+      if (eventData.data) {
+        let event = JSON.parse(eventData.data);
+        console.log(event)
+        if (event.event_code == 'uploadSuccess') { //sucess
+          timer(50);
+        }
+
+        else if (event.event_code == 'submitSuccess') {
+          myDisable()
+          timer(100).then(async () => {
+            $('#payment').hide();
+            /* $('#process_confirmation').show(); */
+            $("#pickUp").show();
+            $("#step2").addClass("active");
+            $("#step2>div").addClass("active");
+            $("#step2").addClass("done");
+          });
+        }
+      }
+      else {
+
+      }
+    } catch (error) {
+      console.log(error)
+    }
+
+  })
+
+
 }
 
 function pickup_Bpi() {
@@ -1815,9 +1898,9 @@ function pickup_Bpi() {
   $("#step3_circle").addClass("md-step-step3-circle ");
   $("#step3_span").addClass("md-step3-span");
   $("#step3_reference").addClass("md-step3-span")
- /*  $("#step3").addClass("active");
-  $("#step3>div").addClass("active"); */
- /*  $("#step3").addClass("done"); */
+  /*  $("#step3").addClass("active");
+   $("#step3>div").addClass("active"); */
+  /*  $("#step3").addClass("done"); */
 }
 
 function addBank(event) {
@@ -1995,18 +2078,18 @@ function goBack() {
   /* $('#form_wrapper')[0].scrollIntoView(true); */
 }
 
-function goBackPickup(){
+function goBackPickup() {
   $("#step3").removeClass("done");
-    $('#pickUp').hide();
-    $('#requirements').show();
+  $('#pickUp').hide();
+  $('#requirements').show();
 }
 
 function goBack1() {
   console.log('go back!!!');
-    $("#step3").removeClass("done");
-    $('#account_details').hide();
-    $('#requirements').show();
-  
- 
+  $("#step3").removeClass("done");
+  $('#account_details').hide();
+  $('#requirements').show();
+
+
   /* $('#form_wrapper')[0].scrollIntoView(true); */
 }
