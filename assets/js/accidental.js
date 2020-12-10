@@ -1768,23 +1768,7 @@ function handleAccountInfo(event) {
             renderProgress(50)
           }
 
-          else if (event.event_code == 'submitSuccess') {
-            myDisable()
-            
-              renderProgress(100)
-              $("#step2").addClass("done");
-              /*  $("#step3").addClass("active");
-               $("#step3>div").addClass("active"); */
-              /* $("#step3").addClass("done"); */
-              $("#step3_circle").addClass("md-step-step3-circle ");
-              $("#step3_span").addClass("md-step3-span");
-              $("#step3_reference").addClass("md-step3-span")
-              $("#account_details").hide();
-              $("#process_confirmation").show();
-              console.log("Data -> ", data);
-
-          
-          }
+        
         }
         else {
 
@@ -1795,7 +1779,44 @@ function handleAccountInfo(event) {
 
     })
 
+    window.addEventListener('message', function (eventData) {
 
+      console.log("receiving final event  event in acc")
+      // console.log(event.data.event_code)
+      try {
+
+        if (eventData.data) {
+          let event = JSON.parse(eventData.data);
+          console.log(event)
+        if (event.event_code == 'submitSuccess') {
+            myDisable()
+
+            renderProgress(100)
+            $("#step2").addClass("done");
+            /*  $("#step3").addClass("active");
+             $("#step3>div").addClass("active"); */
+            /* $("#step3").addClass("done"); */
+            $("#step3_circle").addClass("md-step-step3-circle ");
+            $("#step3_span").addClass("md-step3-span");
+            $("#step3_reference").addClass("md-step3-span")
+            $("#account_details").hide();
+            $("#process_confirmation").show();
+            console.log("Data -> ", data);
+
+
+          }
+
+
+        }
+        else {
+
+        }
+      } catch (error) {
+        console.log(error)
+      }
+
+    })
+      
   } else {
     $("#popUp").modal("show");
   }
@@ -1864,20 +1885,10 @@ function pickUp() {
         let event = JSON.parse(eventData.data);
         console.log(event)
         if (event.event_code == 'uploadSuccess') { //sucess
-          timer(50);
+          renderProgress(50);
         }
 
-        else if (event.event_code == 'submitSuccess') {
-          myDisable()
-          timer(100).then(async () => {
-            $('#payment').hide();
-            /* $('#process_confirmation').show(); */
-            $("#pickUp").show();
-            $("#step2").addClass("active");
-            $("#step2>div").addClass("active");
-            $("#step2").addClass("done");
-          });
-        }
+       
       }
       else {
 
@@ -1888,6 +1899,37 @@ function pickUp() {
 
   })
 
+  window.addEventListener('message', function (eventData) {
+
+    console.log("receiving final event  event in acc")
+    // console.log(event.data.event_code)
+    try {
+
+      if (eventData.data) {
+        let event = JSON.parse(eventData.data);
+        console.log(event)
+       
+        if (event.event_code == 'submitSuccess') {
+        renderProgress(100)
+          myDisable()
+          // timer().then(async () => {
+            $('#payment').hide();
+            /* $('#process_confirmation').show(); */
+            $("#pickUp").show();
+            $("#step2").addClass("active");
+            $("#step2>div").addClass("active");
+            $("#step2").addClass("done");
+          // });
+        }
+      }
+      else {
+
+      }
+    } catch (error) {
+      console.log(error)
+    }
+
+  })
 
 }
 
