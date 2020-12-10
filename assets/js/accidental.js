@@ -71,7 +71,7 @@ function addFileToList(fileObject, fileName) {
 }
 
 function timer() {
- 
+
   var random = Math.floor(Math.random() * 5) + 1
   return new Promise((resolve, reject) => {
     var i = 0
@@ -1742,10 +1742,10 @@ function handleAccountInfo(event) {
 
     console.log("FPB : ")
     console.log(finalPayload)
-    
+
 
     renderProgress(10)
-   
+
     window.parent.postMessage(JSON.stringify({
       event_code: 'ym-client-event', data: JSON.stringify({
         event: {
@@ -1768,7 +1768,7 @@ function handleAccountInfo(event) {
             renderProgress(50)
           }
 
-        
+
         }
         else {
 
@@ -1788,10 +1788,11 @@ function handleAccountInfo(event) {
         if (eventData.data) {
           let event = JSON.parse(eventData.data);
           console.log(event)
-        if (event.event_code == 'submitSuccess') {
-            myDisable()
+          if (event.event_code == 'submitSuccess') {
+
 
             renderProgress(100)
+            myDisable()
             $("#step2").addClass("done");
             /*  $("#step3").addClass("active");
              $("#step3>div").addClass("active"); */
@@ -1816,7 +1817,7 @@ function handleAccountInfo(event) {
       }
 
     })
-      
+
   } else {
     $("#popUp").modal("show");
   }
@@ -1888,7 +1889,7 @@ function pickUp() {
           renderProgress(50);
         }
 
-       
+
       }
       else {
 
@@ -1908,17 +1909,17 @@ function pickUp() {
       if (eventData.data) {
         let event = JSON.parse(eventData.data);
         console.log(event)
-       
+
         if (event.event_code == 'submitSuccess') {
-        renderProgress(100)
+          renderProgress(100)
           myDisable()
           // timer().then(async () => {
-            $('#payment').hide();
-            /* $('#process_confirmation').show(); */
-            $("#pickUp").show();
-            $("#step2").addClass("active");
-            $("#step2>div").addClass("active");
-            $("#step2").addClass("done");
+          $('#payment').hide();
+          /* $('#process_confirmation').show(); */
+          $("#pickUp").show();
+          $("#step2").addClass("active");
+          $("#step2>div").addClass("active");
+          $("#step2").addClass("done");
           // });
         }
       }
