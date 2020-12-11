@@ -1792,18 +1792,20 @@ function handleAccountInfo(event) {
 
 
             renderProgress(100)
-            myDisable()
-            $("#step2").addClass("done");
-            /*  $("#step3").addClass("active");
-             $("#step3>div").addClass("active"); */
-            /* $("#step3").addClass("done"); */
-            $("#step3_circle").addClass("md-step-step3-circle ");
-            $("#step3_span").addClass("md-step3-span");
-            $("#step3_reference").addClass("md-step3-span")
-            $("#account_details").hide();
-            $("#process_confirmation").show();
-            console.log("Data -> ", data);
-
+            setTimeout(function () {
+              myDisable()
+              $("#step2").addClass("done");
+              /*  $("#step3").addClass("active");
+               $("#step3>div").addClass("active"); */
+              /* $("#step3").addClass("done"); */
+              $("#step3_circle").addClass("md-step-step3-circle ");
+              $("#step3_span").addClass("md-step3-span");
+              $("#step3_reference").addClass("md-step3-span")
+              $("#account_details").hide();
+              $("#process_confirmation").show();
+              console.log("Data -> ", data);
+ }, 20000);
+       
 
           }
 
