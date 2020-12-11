@@ -1869,8 +1869,7 @@ function pickUp() {
 
   });
   // $('#spin1').show();
-  timer(10);
-  timer(50);
+ 
   window.parent.postMessage(JSON.stringify({
     event_code: 'ym-client-event', data: JSON.stringify({
       event: {
@@ -1915,15 +1914,23 @@ function pickUp() {
         console.log(event)
 
         if (event.event_code == 'submitSuccess') {
-          renderProgress(100)
-          myDisable()
-          // timer().then(async () => {
-          $('#payment').hide();
-          /* $('#process_confirmation').show(); */
-          $("#pickUp").show();
-          $("#step2").addClass("active");
-          $("#step2>div").addClass("active");
-          $("#step2").addClass("done");
+
+          setTimeout(function () {
+            renderProgress(100)
+          }, 2000);
+
+          setTimeout(function () {
+            myDisable()
+            // timer().then(async () => {
+            $('#payment').hide();
+            /* $('#process_confirmation').show(); */
+            $("#pickUp").show();
+            $("#step2").addClass("active");
+            $("#step2>div").addClass("active");
+            $("#step2").addClass("done");
+          }, 2000);
+
+        
           // });
         }
       }
