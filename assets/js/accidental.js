@@ -1789,9 +1789,11 @@ function handleAccountInfo(event) {
           let event = JSON.parse(eventData.data);
           console.log(event)
           if (event.event_code == 'submitSuccess') {
+            setTimeout(function () {
+              renderProgress(100)
+            }, 2000);
 
 
-            renderProgress(100)
             setTimeout(function () {
               myDisable()
               $("#step2").addClass("done");
@@ -1804,8 +1806,8 @@ function handleAccountInfo(event) {
               $("#account_details").hide();
               $("#process_confirmation").show();
               console.log("Data -> ", data);
- }, 20000);
-       
+            }, 2000);
+
 
           }
 
