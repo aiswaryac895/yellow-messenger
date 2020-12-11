@@ -1856,8 +1856,8 @@ function pickUp() {
   console.log(finalPayload)
 
   // $('#spin1').show();
-  document.getElementById('showLoader').style.display = 'block';
-  document.getElementById('no-loader').style.display = 'none';
+  // document.getElementById('showLoader').style.display = 'block';
+  // document.getElementById('no-loader').style.display = 'none';
   window.parent.postMessage(JSON.stringify({
     event_code: 'ym-client-event', data: JSON.stringify({
       event: {
