@@ -1854,20 +1854,7 @@ function pickUp() {
 
   console.log("pick up payload : ")
   console.log(finalPayload)
-  myDisable()
-  timer().then(async () => {
-    $("#step2").addClass("done");
-    /*  $("#step3").addClass("active");
-     $("#step3>div").addClass("active"); */
-    /* $("#step3").addClass("done"); */
-    $("#step3_circle").addClass("md-step-step3-circle ");
-    $("#step3_span").addClass("md-step3-span");
-    $("#step3_reference").addClass("md-step3-span")
-    $("#account_details").hide();
-    $("#process_confirmation").show();
-    console.log("Data -> ", data);
 
-  });
   // $('#spin1').show();
  
   window.parent.postMessage(JSON.stringify({
@@ -1878,7 +1865,7 @@ function pickUp() {
       }
     })
   }), '*');
-
+  renderProgress(10);
   window.addEventListener('message', function (eventData) {
 
     console.log("receiving final event  event in acc")
