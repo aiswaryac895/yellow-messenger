@@ -72,7 +72,7 @@ function addFileToList(fileObject, fileName) {
 
 function timer() {
 
-  var random = Math.floor(Math.random() * 5) + 1
+  var random = 10
   return new Promise((resolve, reject) => {
     var i = 0
     let cleartime = setInterval(() => {
