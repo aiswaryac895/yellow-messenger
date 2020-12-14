@@ -1744,7 +1744,7 @@ function handleAccountInfo(event) {
     console.log(finalPayload)
 
 
-    renderProgress(10)
+    timer(10)
 
     window.parent.postMessage(JSON.stringify({
       event_code: 'ym-client-event', data: JSON.stringify({
@@ -1765,7 +1765,7 @@ function handleAccountInfo(event) {
           let event = JSON.parse(eventData.data);
           console.log(event)
           if (event.event_code == 'uploadSuccess') { //sucess
-            renderProgress(50)
+            timer(50)
           }
 
 
@@ -1790,7 +1790,7 @@ function handleAccountInfo(event) {
           console.log(event)
           if (event.event_code == 'submitSuccess') {
             setTimeout(function () {
-              renderProgress(100)
+              timer(100)
             }, 2000);
 
 
