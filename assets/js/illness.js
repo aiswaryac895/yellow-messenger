@@ -101,7 +101,7 @@ function timer() {
         }, 500);
     })
 }
-
+debugger
 function renderProgress(progress) {
     progress = Math.floor(progress);
     if (progress < 25) {
