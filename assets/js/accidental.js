@@ -71,7 +71,7 @@ function addFileToList(fileObject, fileName) {
 }
 
 function timer(x) {
-
+  x = 50;
   var random = Math.floor(Math.random() * 5) + 1
   return new Promise((resolve, reject) => {
     var i = 0
