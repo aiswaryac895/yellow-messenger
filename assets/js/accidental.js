@@ -70,26 +70,26 @@ function addFileToList(fileObject, fileName) {
   }
 }
 
-function timer(x) {
+function timer(lowerVal,UpperVal) {
 
   var random = Math.floor(Math.random() * 5) + 1
   return new Promise((resolve, reject) => {
-    var i = 0
+    var i = lowerVal
     let cleartime = setInterval(() => {
       i = random + i;
       renderProgress(i)
-      if (i == (x-1)) {
-        i = x;
+      if (i == (UpperVal-1)) {
+        i = UpperVal;
         renderProgress(i)
       }
-      if (i == x) {
+      if (i == UpperVal) {
 
         console.log("cleartime");
         clearTimeout(cleartime);
         resolve("cleartime")
       }
       //  i++;
-    }, 500);
+    }, 1000);
   })
 }
 
@@ -1744,7 +1744,7 @@ function handleAccountInfo(event) {
     console.log(finalPayload)
 
 
-    timer(10)
+    timer(0,20)
 
     window.parent.postMessage(JSON.stringify({
       event_code: 'ym-client-event', data: JSON.stringify({
@@ -1765,7 +1765,7 @@ function handleAccountInfo(event) {
           let event = JSON.parse(eventData.data);
           console.log(event)
           if (event.event_code == 'uploadSuccess') { //sucess
-            timer(50)
+            timer(20,50)
           }
 
 
@@ -1790,8 +1790,8 @@ function handleAccountInfo(event) {
           console.log(event)
           if (event.event_code == 'submitSuccess') {
             setTimeout(function () {
-              timer(100)
-            }, 2000);
+              timer(50,100)
+            }, 3000);
 
 
             setTimeout(function () {
@@ -1866,7 +1866,7 @@ function pickUp() {
       }
     })
   }), '*');
-  timer(10);
+  timer(0,20);
   window.addEventListener('message', function (eventData) {
 
     console.log("receiving final event  event in acc")
@@ -1877,7 +1877,7 @@ function pickUp() {
         let event = JSON.parse(eventData.data);
         console.log(event)
         if (event.event_code == 'uploadSuccess') { //sucess
-          timer(50);
+          timer(20,50);
         }
 
 
@@ -1904,7 +1904,7 @@ function pickUp() {
         if (event.event_code == 'submitSuccess') {
 
           setTimeout(function () {
-           timer(100)
+           timer(50,100)
           }, 2000);
 
           setTimeout(function () {
