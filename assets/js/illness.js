@@ -83,6 +83,7 @@ function addFileToList(fileObject, fileName) {
 }
 
 function timer() {
+    debugger
     var random = Math.floor(Math.random() * 5) + 1
     return new Promise((resolve, reject) => {
         var i = 0
@@ -101,8 +102,9 @@ function timer() {
         }, 500);
     })
 }
-debugger
+
 function renderProgress(progress) {
+    debugger
     progress = Math.floor(progress);
     if (progress < 25) {
         var angle = -90 + (progress / 100) * 360;
