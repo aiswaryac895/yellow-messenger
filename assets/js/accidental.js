@@ -89,7 +89,7 @@ function timer(lowerVal,UpperVal) {
         resolve("cleartime")
       }
       //  i++;
-    }, 1000);
+    }, 500);
   })
 }
 
@@ -1789,12 +1789,8 @@ function handleAccountInfo(event) {
           let event = JSON.parse(eventData.data);
           console.log(event)
           if (event.event_code == 'submitSuccess') {
-            setTimeout(function () {
-              timer(50,100)
-            }, 3000);
-
-
-            setTimeout(function () {
+   
+            timer(50, 100).then(async () => {
               myDisable()
               $("#step2").addClass("done");
               /*  $("#step3").addClass("active");
@@ -1805,8 +1801,11 @@ function handleAccountInfo(event) {
               $("#step3_reference").addClass("md-step3-span")
               $("#account_details").hide();
               $("#process_confirmation").show();
-              console.log("Data -> ", data);
-            }, 2000);
+              console.log("Data -> ", data); })
+          
+
+
+        
 
 
           }
@@ -1903,11 +1902,7 @@ function pickUp() {
 
         if (event.event_code == 'submitSuccess') {
 
-          setTimeout(function () {
-           timer(50,100)
-          }, 2000);
-
-          setTimeout(function () {
+          timer(50, 100).then(async () => {
             myDisable()
             // timer().then(async () => {
             $('#payment').hide();
@@ -1915,8 +1910,9 @@ function pickUp() {
             $("#pickUp").show();
             $("#step2").addClass("active");
             $("#step2>div").addClass("active");
-            $("#step2").addClass("done");
-          }, 2000);
+            $("#step2").addClass("done");})
+        
+     
 
         
           // });
