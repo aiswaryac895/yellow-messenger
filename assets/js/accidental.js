@@ -70,19 +70,19 @@ function addFileToList(fileObject, fileName) {
   }
 }
 
-function timer() {
+function timer(x) {
 
   var random = Math.floor(Math.random() * 5) + 1
   return new Promise((resolve, reject) => {
     var i = 0
     let cleartime = setInterval(() => {
       i = random + i;
-      renderProgress(isNotNumber)
-      if (i == 9) {
-        i = 100;
+      renderProgress(i)
+      if (i == (x-1)) {
+        i = x;
         renderProgress(i)
       }
-      if (i == 100) {
+      if (i == x) {
 
         console.log("cleartime");
         clearTimeout(cleartime);
@@ -1866,7 +1866,7 @@ function pickUp() {
       }
     })
   }), '*');
-  timer();
+  timer(10);
   window.addEventListener('message', function (eventData) {
 
     console.log("receiving final event  event in acc")
@@ -1877,7 +1877,7 @@ function pickUp() {
         let event = JSON.parse(eventData.data);
         console.log(event)
         if (event.event_code == 'uploadSuccess') { //sucess
-          timer();
+          timer(50);
         }
 
 
@@ -1904,7 +1904,7 @@ function pickUp() {
         if (event.event_code == 'submitSuccess') {
 
           setTimeout(function () {
-           timer()
+           timer(100)
           }, 2000);
 
           setTimeout(function () {
