@@ -72,7 +72,7 @@ function addFileToList(fileObject, fileName) {
 
 function timer() {
 
-  var random = 10
+  var random = Math.floor(Math.random() * 5) + 1
   return new Promise((resolve, reject) => {
     var i = 0
     let cleartime = setInterval(() => {
@@ -1866,7 +1866,7 @@ function pickUp() {
       }
     })
   }), '*');
-  renderProgress(10);
+  timer();
   window.addEventListener('message', function (eventData) {
 
     console.log("receiving final event  event in acc")
@@ -1877,7 +1877,7 @@ function pickUp() {
         let event = JSON.parse(eventData.data);
         console.log(event)
         if (event.event_code == 'uploadSuccess') { //sucess
-          renderProgress(50);
+          timer();
         }
 
 
@@ -1904,7 +1904,7 @@ function pickUp() {
         if (event.event_code == 'submitSuccess') {
 
           setTimeout(function () {
-            renderProgress(100)
+           timer()
           }, 2000);
 
           setTimeout(function () {
