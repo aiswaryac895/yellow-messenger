@@ -2002,7 +2002,7 @@ function finalSubmitCall() {
   });
   finalData['source'] = source;
   finalData['data'] = raw;
-  timer(0, 50).then(async ()=> {
+  timer(0, 70).then(async ()=> {
     window.parent.postMessage(JSON.stringify({
       event_code: 'ym-client-event', data: JSON.stringify({
         event: {
@@ -2029,7 +2029,7 @@ function finalSubmitCall() {
             // disableDottedLoader();
             myDisable()
             document.getElementById('ref_number').innerHTML = event.data?.transactionNumber
-            // timer(50, 100).then(async () => {
+            timer(70, 100).then(async () => {
             $("#step2").addClass("done");
 
             $("#step3_circle").addClass("md-step-step3-circle ");
@@ -2040,12 +2040,12 @@ function finalSubmitCall() {
             $("#pickUp").hide();
             $("#process_confirmation").show();
 
-            // });
+            });
 
           }
           else {
             // alert(event.data.returnMessage + 'returnCode not 0 ')
-            timer(50, 100).then(async () => {
+            timer(70, 100).then(async () => {
               document.getElementById('returnMessage').innerHTML = event.data.returnMessage;
               $("#invalidReturnCode").modal("show");
             });
