@@ -2048,7 +2048,7 @@ function finalSubmitCall() {
             // timer(70, 100).then(async () => {
               document.getElementById('returnMessage').innerHTML = event.data.returnMessage;
               $("#invalidReturnCode").modal("show");
-            // });
+            // }); //
           }
         }
         else {
