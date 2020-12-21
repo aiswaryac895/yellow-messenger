@@ -58,8 +58,8 @@ $('#privacy_consent_beneficiary_1').prop('checked', true);
 $('#privacy_consent_beneficiary_2').prop('checked', true);
 $('#privacy_consent_beneficiary_3').prop('checked', true);
 
-document.getElementById('submit9_waiting').style.display = 'none'
-document.getElementById('submit10_waiting').style.display = 'none'
+// document.getElementById('submit9_waiting').style.display = 'none'
+// document.getElementById('submit10_waiting').style.display = 'none'
 
 let basicInformation = {};
 let InsuredInformation = {};
@@ -717,7 +717,7 @@ function validateNotNumber(evt) {
 }
 //to call preSubmit api
 function preSubmitCall() {
-    enableDottedLoader();
+    // enableDottedLoader();
     //Basic Information
     //Insured information
     //Beneficiary list
@@ -758,7 +758,7 @@ function preSubmitCall() {
                 console.log(event)
                 if (event.event_code == 'preSubmitResponse') { //sucess
                     if (event.data.returnCode == '0' || event.data.retCode == '0') {
-                        disableDottedLoader();
+                        // disableDottedLoader();
 
                         timer(25, 50).then(async () => {
                         $("#step2").addClass("done");
@@ -793,7 +793,7 @@ function preSubmitCall() {
 }
 
 function finalSubmitCall() {
-    enableDottedLoader();
+    // enableDottedLoader();
     let filesObject = {};
     filesObject["folderName"] = `CLAIMS/PAL/${referenceNumber}`
     filesObject["fileList"] = filesList;
@@ -846,7 +846,7 @@ function finalSubmitCall() {
                 console.log(event)
                 if (event.event_code == 'finalSubmitResponse') { //sucess
                     if (event.data.returnCode == '0' || event.data.retCode == '0') {
-                        disableDottedLoader();
+                        // disableDottedLoader();
                         myDisable()
                         document.getElementById('ref_number').innerHTML = event.data?.transactionNumber
                         timer(75, 100).then(async () => {
