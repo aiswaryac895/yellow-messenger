@@ -696,6 +696,7 @@ function detection(evt) {
 }
 
 
+
 function check_Mobile_Length(evt, max_Length) {
     let id = evt.target.id;
     var val = document.getElementById(id).value;
@@ -715,6 +716,8 @@ function validateNotNumber(evt) {
     $(`#err_${id}`).show();
     return;
 }
+
+
 //to call preSubmit api
 function preSubmitCall() {
     // enableDottedLoader();
